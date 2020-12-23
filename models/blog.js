@@ -22,6 +22,7 @@ const blogSchema = new Schema(
 
 
 //Deffinition du Model
+// Mongoose va prendre  l'argument 'Blog'  et le rendre au pluriel et le chercher dans la base de données
 const Blog = mongoose.model('Blog', blogSchema);
 module.exports = Blog;
 
