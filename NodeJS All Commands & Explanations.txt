@@ -1,0 +1,636 @@
+ ----------------
+| NODE FORMATION |
+ ----------------
+
+*********
+VID ((1))
+*********
+
+Introduction et installation des outils 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Commandes Git => pour la préparation de l'environnement 
+
+=> git init
+=> git checkout -b main 
+=> git branch -d master
+=> git checkout -b lesson-1
+=> git checkout -b lesson-2
+=> git checkout -b lesson-3
+=> git checkout -b lesson-4
+=> git checkout -b lesson-5
+=> git checkout -b lesson-6
+=> git checkout -b lesson-7
+=> git checkout -b lesson-8
+=> git checkout -b lesson-9
+=> git checkout -b lesson-10
+=> git checkout -b lesson-11
+=> git checkout -b lesson-12
+=> git remote add origin https://github.com/ZackWearden69/node-crash-course.git
+
+
+
+*********
+VID ((2))
+*********
+
+Chap 1 : Node Basics (Test.js)
+________
+
+* String Literals (Littéraux de gabarits) => Basic stuff 
+
+
+Commandes Git =>
+
+=> cd C:\Users\IGDERZEN.Zakaria\Documents\Node Projects\node-crash-course
+=> git init
+=> git checkout -b main 
+=> git checkout -b lesson-1
+=> git status
+=> git add "test.js"
+=> git status
+=> git commit -m "Initial commit"
+=> git remote add origin https://github.com/ZackWearden69/node-crash-course.git
+=> git remote -v
+=> git push -u origin lesson-1
+
+
+
+
+Chap 2 : The Global Object (global.js)
+________
+
+All objects/Methodes are attched to this one global object 
+
+*a) Window (global objct) ==> the browser
+
+*b) global (global objct) ==> Node
+
+//DOM methodes are inaccessible  in global
+
+
+Some functions attached to the global object :
+----------------------------------------------
+
+- setTimeout / clearTimeout
+- setInterval / clearInterval
+- setImmediate / clearImmediate
+- process.nextTick
+
+
+
+
+Chap 3 : Modules & Require (modules.js / people.js)
+________
+ 
+Import another module :
+
+* modules.js => const xyz = require('./people'); xyz =>{} empty object
+
+* [[
+ module.exports = {
+    people,ages
+}; 
+
+ const {people,ages} = require('./people');
+]]
+
+* os  stands for os Core Moodule of the Node
+
+const os = require('os');
+console.log(os);
+
+
+
+Chap 4 : The file system (file.js)
+________
+
+
+const fs = require('fs');
+
+
+* a) reading files ==>   fs.readFile()  ==> Opération asynchrone qui ne bloque pas notre code 
+ 
+* b) writing files ==> fs.writeFile()
+
+* c) directories ==> fs.mkdir() pour la création du dossier /fs.rmdir() pour la suppression du dossier
+
+* d) deleting files ==>  fs.unlink()  
+
+
+Chap 5 : Streams & Buffers (streams.js)
+________
+
+* const readStream = fs.createReadStream()
+
+* const writeStream = fs.createWriteStream();
+
+* readStream.pipe(writeStream);
+
+ 
+
+
+=> git checkout -b lesson-2
+=> git status
+=> git add "streams.js"
+=> git add "people.js"
+=> git add "modules.js"
+=> git add "global.js"
+=> git add "files.js"
+=> git status
+=> git commit -m "Initial commit"
+=> git remote -v
+=> git push -u origin lesson-2
+=> git push -f origin lesson-2
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((3))
+*********
+
+Chap 1 : Clients & Servers (Test.js)
+________
+
+
+* const http = require('http');
+
+* http.createServer()
+
+* server.listen();
+
+* 'localhost'  => 127.0.0.1 => Mon propre PC
+
+* http://localhost:3000/  =>  console.log('Request mode');
+
+
+
+=> git checkout -b lesson-3
+=> git status
+=> git add "server.js"
+=> git status
+=> git commit -m "Initial commit"
+=> git remote -v
+=> git push -u origin lesson-3
+=> git push -f origin lesson-3
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((4))
+*********
+
+Chap 1 : Clients & Servers (Test.js /  /views)
+________
+
+
+ * res.setHeader('Content-Type', 'text/plain') ==> pour le text brute
+
+ * res.setHeader("Content-Type", "text/html") ==> pour les pages HTML 
+
+ * fs.readFile(path, (err, data) ==> utlisation de variable dynamique path pour le rootage basic
+
+
+  // Global Status Codes => 
+  // 100 Range    ==> Informational responses
+  // 200 Range    ==> success codes
+  // 300 Range    ==> codes for redirects
+  // 400 Range    ==> user or client erreor codes
+  // 500 Range    ==> server error codes
+
+  // Status Code => 
+  // 200  ==> OK
+  // 301  ==> Resource moved 
+  // 404  ==> Not found
+  // 500  ==> Internal server error 
+
+
+  * res.statusCode ==> pour donner un code du status  à la page visité
+
+ 	Consultation du ((Network)) dans la console du navigeateur pour Vérifier le CODE DU STATUS
+
+
+
+
+=> git checkout -b lesson-4
+=> git status
+=> git add "server.js"
+=> git add "views/index.html"
+=> git add "views/404.html"
+=> git add "views/about.html"
+=> git status
+=> git commit -m "Initial commit"
+=> git remote -v
+=> git push -u origin lesson-4
+=> git push -f origin lesson-4
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((5))
+*********
+
+Chap 1 : NPM (Test.js)    
+________
+
+* Consult https://www.npmjs.com/   for a specifique module to addto project
+
+	nodemon module =>   node  ===>  nodemon  ( doesn't need the server to restart) 
+
+
+npm install -g (package_Name)
+
+ex :  
+
+	#npm install -g nodemon
+	#npm install -g lodash 
+
+
+Pour initialiser un fichier package.json :
+
+	#npm init
+
+
+*  lors de la suppression du dossier node_modules on peut récupérer tous les modules avec la commande :
+
+* quand on commit un projet dans le git , on fait pas de commit sur les dépandances (node_modules)
+on exécute seulement la commande suivante pour récupérer les dépandances dont on a besoin 
+
+
+	#npm install
+
+
+
+
+=> git checkout -b lesson-5
+=> git checkout lesson-5
+=> git status
+=> git add "server.js"
+=> git add "views/index.html"
+=> git add "views/404.html"
+=> git add "views/about.html"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git status
+=> git commit -m "Initial commit"
+=> git remote -v
+=> git push -u origin lesson-5
+=> git push -f origin lesson-5
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((6))
+*********
+
+Chap 1 : Express Apps   
+________
+
+* Pour générer le fichier package.json 
+
+	#npm init 
+
+* Pour générer le fichier package-lock.json
+
+	#npm install --package-lock
+
+* Pour installer le module Express
+
+	#npm install -g express
+
+
+
+=> git checkout -b lesson-6
+=> git checkout lesson-6
+=> git status
+=> git add "server.js"
+=> git add "views/index.html"
+=> git add "views/404.html"
+=> git add "views/about.html"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git add "app.js"
+=> git status
+=> git commit -m "lesson-6"
+=> git remote -v
+=> git push -u origin lesson-6
+=> git push -f origin lesson-6
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((7))
+*********
+
+Chap 1 : View Engines 
+________
+
+* Pour installer le module Embedded JavaScript templating ( manipulation du contenu dynamique)
+
+	#npm install -g ejs
+
+* pour ecrire du code EJS :  
+
+	<%  xxx  %> 
+
+* pour l'affichage d'une valeur de variable dynamique : 
+(ça évite les caractère spéciaux donc pas de contenu HTML)
+
+	<%=  xxx  %> 
+
+* pour afficher du contenu HTML :
+
+	<%-  xxx  %> 
+
+
+
+
+=> git checkout -b lesson-7
+=> git checkout lesson-7
+=> git status
+=> git add "views/index.ejs"
+=> git add "views/404.ejs"
+=> git add "views/about.ejs"
+=> git add "views/create.ejs"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git add "views/partials/footer.ejs"
+=> git add "views/partials/head.ejs"
+=> git add "views/partials/nav.ejs"
+=> git add "app.js"
+=> git status
+=> git commit -m "lesson-7"
+=> git remote -v
+=> git push -u origin lesson-7
+=> git push -f origin lesson-7
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((8))
+*********
+
+Chap 1 : Middleware
+________
+
+
+* Un Middleware est un code qui traite les response et les requeste 
+
+
+Request =====>  Middleware (Code Serveur)  ====> Responses
+
+Ex : 
+		app.use(func) => la méthode use est généralement utilisé pour faire marcher des Middleware 
+ 
+
+- Afficher les Log
+
+- vérification d'authentification pour les Url protégé
+
+- parese les données JSON  a partit des Request
+
+- Retourner des pages 404
+
+
+
+
+Chap 2 : Utilisation du Next()
+________
+
+
+* Pour passer d'un middleware à un autre on utilise 
+	
+	Next();
+
+
+Chap 3 : Middleware (Parties tiers)
+________
+
+Ex:
+
+* Morgan => Logger Middleware  ( The real Dexter Morgan xD)
+
+* Helmet => Security Middleware
+
+
+Chap 4 : Fichiers statics
+________
+
+* Le navigateur ne peut pas accéder directement au fichier de notre projet ,
+
+Parce que le serveur protèges nos fichier automatiquement 
+
+	On doit rendre nos fichier publique grace à cette ligne de code ( Ex : Dossier public / dossier Coucou )
+
+	app.use(express.static('public'));
+	app.use(express.static('Coucou'));
+
+
+
+=> git checkout -b lesson-8
+=> git checkout lesson-8
+=> git status
+=> git add "views/index.ejs"
+=> git add "views/404.ejs"
+=> git add "views/about.ejs"
+=> git add "views/create.ejs"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git add "views/partials/footer.ejs"
+=> git add "views/partials/head.ejs"
+=> git add "views/partials/nav.ejs"
+=> git add "public/styles.css"
+=> git add "app.js"
+=> git status
+=> git commit -m "lesson-8"
+=> git remote -v
+=> git push -u origin lesson-8
+=> git push -f origin lesson-8
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((9))
+*********
+
+Chap 1 : MongoDB
+________
+
+
+https://www.mongodb.com/cloud/atlas/
+
+Cluster : nodeTuts
+
+User : Zack
+Mdp : Ken28
+
+Db : node-tuts
+Collection : blogs
+
+
+
+Chap 2 : Mongoose / Models / Schemas
+________
+
+
+* Mongoose => ODM Library => Object Document Mapping Library
+
+=>  
+	* Déffinition du schéma  (Structure et type des données)
+
+	* Déffinition du Model 
+
+
+
+
+
+
+=> git checkout -b lesson-9
+=> git checkout lesson-9
+=> git status
+=> git add "views/index.ejs"
+=> git add "views/404.ejs"
+=> git add "views/about.ejs"
+=> git add "views/create.ejs"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git add "views/partials/footer.ejs"
+=> git add "views/partials/head.ejs"
+=> git add "views/partials/nav.ejs"
+=> git add "public/styles.css"
+=> git add "app.js"
+=> git add "models/blog.js"
+=> git status
+=> git commit -m "lesson-9"
+=> git remote -v
+=> git push -u origin lesson-9
+=> git push -f origin lesson-9
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((10))
+*********
+
+Chap 1 : Get , Posts , Delete Requests
+________
+
+
+* Request types => Get , Posts , Delete , Put
+
+// transferer la donnée vers un format valable qu'on peut utiliser 
+
+	app.use(express.urlencoded({ extended: true }));
+
+
+Chap 2 : Route parameters
+________
+
+
+ const trashcan = document.querySelector("a.delete");
+      trashcan.addEventListener("click", (e) => {
+        const endpoint = `/blogs/${trashcan.dataset.doc}`;
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then(() => {})
+          .catch((err) => console.log(err));
+      });
+
+
+* Front End Delete with AJAX Request in details.ejs
+
+* Quand on fait ça avec AJAX Request on peut pas utiliser un res.redirect('/blogs') comme Response
+
+* Au lieu e faire ça on envoie du JSON 
+
+
+
+=> git checkout -b lesson-10
+=> git checkout lesson-10
+=> git status
+=> git add "views/index.ejs"
+=> git add "views/404.ejs"
+=> git add "views/about.ejs"
+=> git add "views/create.ejs"
+=> git add "views/details.ejs"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git add "views/partials/footer.ejs"
+=> git add "views/partials/head.ejs"
+=> git add "views/partials/nav.ejs"
+=> git add "public/styles.css"
+=> git add "app.js"
+=> git add "models/blog.js"
+=> git status
+=> git commit -m "lesson-10"
+=> git remote -v
+=> git push -u origin lesson-10
+=> git push -f origin lesson-10
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*********
+VID ((11))    
+*********
+
+Chap 1 : Express Router & MVC
+________
+
+
+=> git checkout -b lesson-11
+=> git checkout lesson-11
+=> git status
+=> git add "views/404.ejs"
+=> git add "views/about.ejs"
+=> git add "views/blogs/index.ejs"
+=> git add "views/blogs/create.ejs"
+=> git add "views/blogs/details.ejs"
+=> git add "package.json"
+=> git add "package-lock.json"
+=> git add "views/partials/footer.ejs"
+=> git add "views/partials/head.ejs"
+=> git add "views/partials/nav.ejs"
+=> git add "public/styles.css"
+=> git add "app.js"
+=> git add "models/blog.js"
+=> git add "controllers/blogController.js"
+=> git add "routes/blogRoutes.js"
+=> git add "models/blog.js"
+
+=> git status
+=> git commit -m "lesson-11"
+=> git remote -v
+=> git push -u origin lesson-11
+=> git push -f origin lesson-11

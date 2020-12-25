@@ -43,7 +43,7 @@ const blog_delete = (req, res) => {
       res.json({ redirect: '/blogs' });
     })
     .catch(err => {
-      console.log(err);
+      res.status(404).render('404', { title: 'Blog Not Found' });
     });
 };
 
